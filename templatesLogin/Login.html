@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-    <title>Document</title>
+    <title>Login Biblioteca</title>
+    <link rel="icon" type="image/x-icon" href="/images/993552.png">
 </head>
 
 
@@ -15,23 +16,60 @@
 
         <h2> Login </h2>
 
-        <form>
+        <form id="loginForm">
 
-            <input type="text" id="username" placeholder="Nome de usuário" required>
-            <input type="password" id=" password" placeholder="password" required> 
+            <input type="text" id="email" name="email" placeholder="Nome de usuário" required>
+            <input type="password" id="password" name="password" placeholder="password" required> 
             <button type="submit"> Entrar </button>
 
             <div class="sobre"></div>
-
-
         </form>
-
-
-
 
     </div>
     
-    <script src="/script.js"> </script>
+  <script>
+    async function loginUser(email, password) {
+      const url = 'http://127.0.0.1:5000/v1/auth/login'; // Substitua pela URL da sua API
+      
+      const requestBody = {
+        email: email,
+        password: password
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Erro: ${response.status}`);
+        }
+
+        const responseData = await response.json();
+        console.log(responseData);
+
+        // Exibe mensagem de sucesso ou redireciona conforme necessário
+        alert(responseData.message);
+
+      } catch (error) {
+        console.error('Erro ao fazer a requisição:', error);
+        alert('Erro ao fazer login. Por favor, tente novamente.');
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      loginUser(email, password);
+    });
+  </script>
 
     
 </body>
