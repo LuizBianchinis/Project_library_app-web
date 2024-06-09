@@ -140,11 +140,12 @@ ul li.item-menu a .icon > i{
 }
 
 .btn-add-cart{
-    padding: 10px;
-    margin: 10px 0;
+    padding: 30px;
+    margin: 30px 0;
     background-color: #f1f1f1;
     border-radius: 5px;
     margin-top: auto;
+    margin-bottom: 30px;
 }
 
 
@@ -152,10 +153,59 @@ ul li.item-menu a .icon > i{
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 15px;
     font-size: 16px;
     cursor: pointer;
 }
 .btn-add-cart:hover {
     background-color: #444;
+}
+
+.btn-redefinir-estoque{
+    width: 180px; 
+    height: 40px; 
+    font-size: 16px;
+    background-color: #de0526e1; 
+    color: #fff;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+
+.btn-redefinir-estoque:hover {
+    cursor: pointer;
+  }
+
+
+.btn-confirmar-redefinir{
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+.estoque-info {
+    display: inline-block;
+    width: 90px;
+    height: 30px; 
+    font-size: 16px; 
+    background-color: #f0f0f0; 
+    color: #000;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    text-align: center; 
+    line-height: 30px; 
+    margin-top: -10px; 
+    margin-left: -90px;
+}
+
+.esgotado {
+    width: 180px; 
+    height: 50px; 
+    font-size: 16px;
+    background-color: #333; 
+    color: #fff;
+    border: none; 
+    border-radius: 5px; 
+    cursor: not-allowed;
 }

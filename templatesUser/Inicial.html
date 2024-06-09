@@ -47,7 +47,8 @@
             </li>
         </ul>
     </nav>
-    <div class="content">
+    
+    <div class="content inicial">
         <h1>Início</h1>
         <div class="book-catalog">
             <div class="book-item">
@@ -55,42 +56,53 @@
                 <h2>Código Limpo</h2>
                 <p>Robert C. Martin</p>
                 <p>R$ 107,00</p>
-                <button class= "btn-add-cart" onclick="adicionarAoCarrinho('Código Limpo', 'R$ 107,00')">Adicionar ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-codigo-limpo" data-estoque="8" onclick="adicionarAoCarrinho('Código Limpo', 'R$ 107,00', 'codigo-limpo')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-codigo-limpo" data-id="codigo-limpo">Estoque: 8</p>
             </div>
+
             <div class="book-item">
                 <img src="/images/LV477687.webp" alt="Capa do livro 'Redes de computadores'" style="width:150px;height:auto;">
                 <h2>Redes de computadores</h2>
                 <p>Antonio Eduardo Marques da Silva</p>
                 <p>R$ 42,20</p>
-                <button class="btn-add-cart" onclick="adicionarAoCarrinho('Redes de computadores', 'R$ 42,20')">Adicionar Ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-redes-computadores" data-estoque="12" onclick="adicionarAoCarrinho('Redes de computadores', 'R$ 42,20', 'redes-computadores')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-redes-computadores" data-id="redes-computadores">Estoque: 12</p>
             </div>
+    
             <div class="book-item">
                 <img src="/images/LV515293.webp" alt="Capa do livro 'Python para Excel'" style="width:150px;height:auto;">
                 <h2>Python para Excel</h2>
                 <p>Felix Zumstein</p>
                 <p>R$ 67,40</p>
-                <button class="btn-add-cart" onclick="adicionarAoCarrinho('Python para Excel', 'R$ 67,40')">Adicionar Ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-python-excel" data-estoque="5" onclick="adicionarAoCarrinho('Python para Excel', 'R$ 67,40', 'python-excel')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-python-excel" data-id="python-excel">Estoque: 5</p>
             </div>
+            
             <div class="book-item">
                 <img src="/images/LV515296.webp" alt="Capa do livro 'Indo Além com IA'" style="width:150px;height:auto;">
                 <h2>Indo Além com IA</h2>
                 <p>Thomas H. Davenport</p>
                 <p>R$ 56,60</p>
-                <button class="btn-add-cart" onclick="adicionarAoCarrinho('Indo Além com IA', 'R$ 56,60')">Adicionar Ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-alem-ia" data-estoque="3" onclick="adicionarAoCarrinho('Indo Além com IA', 'R$ 56,60', 'alem-ia')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-alem-ia" data-id="alem-ia">Estoque: 3</p>
             </div>
+    
             <div class="book-item">
                 <img src="/images/LV516132.webp" alt="Capa do livro 'Web 3.0'" style="width:150px;height:auto;">
                 <h2>Web 3.0</h2>
                 <p>Maria Olívia Rampim</p>
                 <p>R$ 43,20</p>
-                <button class="btn-add-cart" onclick="adicionarAoCarrinho('Web 3.0', 'R$ 43,20')">Adicionar Ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-web-3.0" data-estoque="6" onclick="adicionarAoCarrinho('Web 3.0', 'R$ 43,20', 'web-3.0')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-web-3.0" data-id="web-3.0">Estoque: 6</p>
             </div>
+    
             <div class="book-item">
                 <img src="/images/LV518250.webp" alt="Capa do livro 'ABC da Robótica'" style="width:150px;height:auto;">
                 <h2>ABC da Robótica</h2>
                 <p>Carlos Seabra & Sérgio Maciel</p>
                 <p>R$ 74,00</p>
-                <button class="btn-add-cart" onclick="adicionarAoCarrinho('ABC da Robótica', 'R$ 74,00')">Adicionar Ao Carrinho</button>
+                <button class="btn-add-cart" id="btn-abc-robotica" data-estoque="8" onclick="adicionarAoCarrinho('ABC da Robótica', 'R$ 74,00', 'abc-robotica')">Adicionar ao Carrinho</button>
+                <p class="estoque-info" id="estoque-abc-robotica" data-id="abc-robotica">Estoque: 8</p>
             </div>
         </div>
     </div>
