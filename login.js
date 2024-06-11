@@ -1,9 +1,9 @@
-async function hashPassword(password) {
+async function hashPassword(login, password) {
   // Importa o módulo Crypto para gerar a hash
   const { crypto } = window;
 
   // Converte a senha em bytes
-  const passwordBytes = new TextEncoder().encode(password);
+  const passwordBytes = new TextEncoder().encode(login+password);
 
   // Gera a hash usando o algoritmo SHA-256
   const hashBuffer = await crypto.subtle.digest('SHA-256', passwordBytes);
@@ -18,11 +18,10 @@ async function hashPassword(password) {
 async function loginUser(email, password) {
   const url = 'http://127.0.0.1:5000/v1/auth/login'; 
   
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(email ,password);
 
   const requestBody = {
-    email: email,
-    password: hashedPassword
+    hash: hashedPassword
   };
 
   try {
