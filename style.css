@@ -1,21 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
 }
 
-body{
-    height: 100vh;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1280' height='720' preserveAspectRatio='none' viewBox='0 0 1280 720'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1184%26quot%3b)' fill='none'%3e%3crect width='1280' height='720' x='0' y='0' fill='url(%23SvgjsLinearGradient1185)'%3e%3c/rect%3e%3cpath d='M 0%2c136 C 85.4%2c167.6 256.2%2c311.2 427%2c294 C 597.8%2c276.8 683.4%2c43.6 854%2c50 C 1024.6%2c56.4 1194.8%2c270.8 1280%2c326L1280 720L0 720z' fill='%23184a7e'%3e%3c/path%3e%3cpath d='M 0%2c579 C 128%2c548 384%2c410.4 640%2c424 C 896%2c437.6 1152%2c602.4 1280%2c647L1280 720L0 720z' fill='%232264ab'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1184'%3e%3crect width='1280' height='720' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1185'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-nav.menu-lateral{
+nav.menu-lateral {
     width: 80px;
     height: 100%;
     background-color: #202020;
@@ -28,39 +36,39 @@ nav.menu-lateral{
     transition: .5s;
 }
 
-nav.menu-lateral.expandir{
+nav.menu-lateral.expandir {
     width: 300px;
 }
 
-.btn-expandir{
+.btn-expandir {
     width: 100%;
     padding-left: 10px;
 }
 
-.btn-expandir > i{
+.btn-expandir > i {
     color: #fff;
     font-size: 24px;
     cursor: pointer;
 }
 
-ul{
+ul {
     height: 100%;
     list-style-type: none;
 }
 
-ul li.item-menu{
+ul li.item-menu {
     transition: .2s;
 }
 
-ul li.ativo{
+ul li.ativo {
     background-color: #1100ff;
 }
 
-ul li.item-menu:hover{
+ul li.item-menu:hover {
     background: #0044ff;
 }
 
-ul li.item-menu a{
+ul li.item-menu a {
     color: #fff;
     text-decoration: none;
     font-size: 20px;
@@ -70,40 +78,42 @@ ul li.item-menu a{
     line-height: 40px;
 }
 
-ul li.item-menu a .txt-link{
+ul li.item-menu a .txt-link {
     margin-left: 70px;
     transition: .5s;
     opacity: 0;
 }
 
-nav.menu-lateral.expandir .txt-link{
+nav.menu-lateral.expandir .txt-link {
     margin-left: 40px;
     opacity: 1;
 }
 
-ul li.item-menu a .icon > i{
+ul li.item-menu a .icon > i {
     font-size: 30px;
     margin-left: 10px;
 }
 
-/* Adicionando margem para que o conteúdo não encoste na barra lateral */
 .content {
-    margin-left: 100px; /* Ajuste esse valor conforme necessário para garantir espaço suficiente */
+    flex: 1;
+    margin-left: 80px;
     padding: 20px;
+    height: calc(100vh - 80px); 
+    overflow-y: auto;
 }
 
 .book-catalog {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Espaçamento entre os itens */
+    gap: 20px;
 }
 
 .book-item {
-    flex: 1 1 150px; /* Flex-grow, flex-shrink, flex-basis */
-    max-width: 200px; /* Largura máxima de cada item */
-    background: #fff; /* Fundo branco para destacar */
-    padding: 10px; /* Espaçamento interno */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito visual */
+    flex: 1 1 150px;
+    max-width: 200px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -139,7 +149,7 @@ ul li.item-menu a .icon > i{
     background-color: #444;
 }
 
-.btn-add-cart{
+.btn-add-cart {
     padding: 30px;
     margin: 30px 0;
     background-color: #f1f1f1;
@@ -148,8 +158,7 @@ ul li.item-menu a .icon > i{
     margin-bottom: 30px;
 }
 
-
-.btn-add-cart{
+.btn-add-cart {
     background-color: #333;
     color: #fff;
     border: none;
@@ -157,18 +166,19 @@ ul li.item-menu a .icon > i{
     font-size: 16px;
     cursor: pointer;
 }
+
 .btn-add-cart:hover {
     background-color: #444;
 }
 
-.btn-redefinir-estoque{
-    width: 180px; 
-    height: 40px; 
+.btn-redefinir-estoque {
+    width: 180px;
+    height: 40px;
     font-size: 16px;
-    background-color: #de0526e1; 
+    background-color: #de0526e1;
     color: #fff;
-    border: none; 
-    border-radius: 5px; 
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     margin-top: auto;
     margin-bottom: 30px;
@@ -176,10 +186,9 @@ ul li.item-menu a .icon > i{
 
 .btn-redefinir-estoque:hover {
     cursor: pointer;
-  }
+}
 
-
-.btn-confirmar-redefinir{
+.btn-confirmar-redefinir {
     margin-top: -30px;
     margin-bottom: 30px;
 }
@@ -187,25 +196,25 @@ ul li.item-menu a .icon > i{
 .estoque-info {
     display: inline-block;
     width: 90px;
-    height: 30px; 
-    font-size: 16px; 
-    background-color: #f0f0f0; 
+    height: 30px;
+    font-size: 16px;
+    background-color: #f0f0f0;
     color: #000;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    text-align: center; 
-    line-height: 30px; 
-    margin-top: -10px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: -10px;
     margin-left: -90px;
 }
 
 .esgotado {
-    width: 180px; 
-    height: 50px; 
+    width: 180px;
+    height: 50px;
     font-size: 16px;
-    background-color: #333; 
+    background-color: #333;
     color: #fff;
-    border: none; 
-    border-radius: 5px; 
+    border: none;
+    border-radius: 5px;
     cursor: not-allowed;
 }
