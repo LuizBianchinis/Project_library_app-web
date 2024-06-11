@@ -128,6 +128,23 @@
                 </div>
                 <p class="estoque-info" id="estoque-abc-robotica" data-id="abc-robotica">Estoque: 0</p>
             </div>
+
+            <div class="add-book-form">
+                <h2>Adicionar Livro</h2>
+                <input type="text" id="book-title" placeholder="Título do Livro">
+                <input type="text" id="book-author" placeholder="Autor do Livro">
+                <input type="text" id="publication_date" placeholder="Data Publicação">
+                <input type="text" id="book-isbn" placeholder="Isbn">
+                <input type="text" id="book-publisher" placeholder="Editora">
+                <input type="text" id="book-genre" placeholder="Gênero">
+                <input type="number" id="book-pages" placeholder="Páginas">
+                <input type="text" id="book-language" placeholder="Idioma">
+                <input type="text" id="book-summary" placeholder="Sumário">
+                <input type="text" id="book-image" placeholder="URL">
+                <input type="number" id="book-price" placeholder="Preço do Livro">
+                <button class="botao-adicionar" onclick="addBook()">Adicionar</button>
+            </div>
+            <div class="book-catalog" id="book-catalog"></div>
         </div>
     </div>
     <script src="/menu.js"></script>

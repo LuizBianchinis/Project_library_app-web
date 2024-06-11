@@ -138,3 +138,50 @@ document.addEventListener('click', function(event) {
         }
     });
 });
+
+function addBook() {
+    var title = document.getElementById('book-title').value;
+    var author = document.getElementById('book-author').value;
+    var publication_date = document.getElementById('publication_date').value;
+    var isbn = document.getElementById('book-isbn').value;
+    var publisher = document.getElementById('book-publisher').value;
+    var genre = document.getElementById('book-genre').value;
+    var pages = document.getElementById('book-pages').value;
+    var language = document.getElementById('book-language').value;
+    var summary = document.getElementById('book-summary').value;
+    var price = document.getElementById('book-price').value;
+    var image = document.getElementById('book-image').value;
+
+    var bookId = title.toLowerCase().replace(/ /g, '-');
+
+    var newBookHTML = `
+        <div class="book-item">
+            <img src="${image}" alt="Capa do livro '${title}'" style="width:150px;height:auto;">
+            <h2>${title}</h2>
+            <p>${author}</p>
+            <p>R$ ${price}</p>
+            <button class="btn-redefinir-estoque" id="btn-redefinir-${bookId}" data-id="${bookId}" onclick="mostrarCampoRedefinirEstoque('${bookId}')">Redefinir Estoque</button>
+            <div class="campo-redefinir" id="campo-redefinir-${bookId}" style="display: none;">
+                <input type="number" id="novo-estoque-${bookId}" placeholder="Novo Estoque">
+                <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${bookId}')">Confirmar</button>
+            </div>
+            <p class="estoque-info" id="estoque-${bookId}" data-id="${bookId}">Estoque: ${stock}</p>
+        </div>
+    `;
+
+    document.getElementById('book-catalog').insertAdjacentHTML('beforeend', newBookHTML);
+
+    document.getElementById('book-title').value = '';
+    document.getElementById('book-author').value = '';
+    document.getElementById('publication_date').value = '';
+    document.getElementById('book-isbn').value = '';
+    document.getElementById('book-publisher').value = '';
+    document.getElementById('book-genre').value = '';
+    document.getElementById('book-pages').value = '';
+    document.getElementById('book-language').value = '';
+    document.getElementById('book-summary').value = '';
+    document.getElementById('book-price').value = '';
+    document.getElementById('book-image').value = '';
+}
+
+document.querySelector('.botao-adicionar').addEventListener('click', addBook);

@@ -218,3 +218,34 @@ ul li.item-menu a .icon > i {
     border-radius: 5px;
     cursor: not-allowed;
 }
+
+.add-book-form {
+    border: 1px solid #ddd;
+    height: 850px;
+    width: 18%;
+    padding: 40px;
+    margin-bottom: -500px;
+    margin-left: 140px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.add-book-form input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.botao-adicionar {
+    width: 160px; 
+    height: 50px; 
+    font-size: 18px; 
+    margin-top: 15px;
+    margin-left: 30px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: #f0f0f0;
+}
