@@ -3,76 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="Login.css">
     <title>Login Biblioteca</title>
     <link rel="icon" type="image/x-icon" href="/images/993552.png">
 </head>
-
-
 <body>
+    <div class="login-wrapper">
+        <div class="login-image">
 
-        
-    <div class="login-container">   
-
-        <h2> Login </h2>
-
-        <form id="loginForm">
-
-            <input type="text" id="email" name="email" placeholder="Nome de usuário" required>
-            <input type="password" id="password" name="password" placeholder="password" required> 
-            <button type="submit"> Entrar </button> 
-            
-
-            <div class="sobre"></div> 
-        </form>
-          <a class="cad" href="Cadastro.html"> Cadastro </a>
+        </div>
+        <div class="login-form-container">
+            <div class="login-form">
+                <h2>Bem vindo de volta!</h2>
+                <form id="loginForm">
+                    <input type="text" id="email" name="email" placeholder="Insira seu e-mail" required>
+                    <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
+                    <button type="submit">Login</button>
+                    <p class="signup-link">Não possui conta? <a href="Cadastro.html">Cadastre-se</a></p>
+                </form>
+            </div>
+        </div>
     </div>
-    
-  <script>
-    async function loginUser(email, password) {
-      const url = 'http://127.0.0.1:5000/v1/auth/login'; // Substitua pela URL da sua API
-      
-      const requestBody = {
-        email: email,
-        password: password
-      };
+    <script>
+        async function loginUser(email, password) {
+            const url = 'http://127.0.0.1:5000/v1/auth/login';
+            const requestBody = { email: email, password: password };
 
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        });
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
 
-        if (!response.ok) {
-          throw new Error(`Erro: ${response.status}`);
+                if (!response.ok) throw new Error(`Erro: ${response.status}`);
+
+                const responseData = await response.json();
+                alert(responseData.message);
+            } catch (error) {
+                console.error('Erro ao fazer a requisição:', error);
+                alert('Erro ao fazer login. Por favor, tente novamente.');
+            }
         }
 
-        const responseData = await response.json();
-        console.log(responseData);
-
-        // Exibe mensagem de sucesso ou redireciona conforme necessário
-        alert(responseData.message);
-
-      } catch (error) {
-        console.error('Erro ao fazer a requisição:', error);
-        alert('Erro ao fazer login. Por favor, tente novamente.');
-      }
-    }
-
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      loginUser(email, password);
-    });
-  </script>
-
-  <!-- Importe o arquivo bcrypt.js -->
-  <script src="../login.js"></script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            loginUser(email, password);
+        });
+    </script>
+    <script src="../login.js"></script>
 </body>
 </html>
