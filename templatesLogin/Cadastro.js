@@ -3,23 +3,23 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); 
 
         // Fetch form values
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const phone = document.getElementById('phone').value;
+        const first_name = document.getElementById('first_name').value;
+        const last_name = document.getElementById('last_name').value;
+        const cellphone = document.getElementById('cellphone').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const birthday = document.getElementById('birthday').value;
+        const birth_date = document.getElementById('birth_date').value;
         const address = document.getElementById('address').value;
         const number = document.getElementById('number').value;
         const zip_code = document.getElementById('zip_code').value;
 
         const formData = {
-            firstName,
-            lastName,
-            phone,
+            first_name,
+            last_name,
+            cellphone,
             email,
             password,
-            birthday,
+            birth_date,
             address,
             number,
             zip_code
