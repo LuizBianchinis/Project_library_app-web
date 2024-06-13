@@ -152,6 +152,9 @@ function addBook() {
     var price = document.getElementById('book-price').value;
     var image = document.getElementById('book-image').value;
 
+    // Defina o estoque inicial
+    var stock = 0;
+
     var bookId = title.toLowerCase().replace(/ /g, '-');
 
     var newBookHTML = `
@@ -169,7 +172,12 @@ function addBook() {
         </div>
     `;
 
-    document.getElementById('book-catalog').insertAdjacentHTML('beforeend', newBookHTML);
+    var bookCatalog = document.getElementById('book-catalog');
+    if (bookCatalog) {
+        bookCatalog.insertAdjacentHTML('beforeend', newBookHTML);
+    } else {
+        console.error('Elemento com ID "book-catalog" não encontrado.');
+    }
 
     document.getElementById('book-title').value = '';
     document.getElementById('book-author').value = '';
@@ -184,4 +192,4 @@ function addBook() {
     document.getElementById('book-image').value = '';
 }
 
-document.querySelector('.botao-adicionar').addEventListener('click', addBook);
+

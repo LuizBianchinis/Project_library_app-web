@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Estoque</title>
+    <link rel="stylesheet" href="/stock.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+</head>
+<body>
+    <nav class="menu-lateral">
+        <div class="menu-header">
+            <img src="logo.png" alt="Logo Brimtop Library" class="logo">
+            <i class="bi bi-x" id="btn-exp"></i>
+        </div>
+        <ul>
+            <li class="item-menu">
+                <a href="AdicionarLivro.html">
+                    <span class="icon"><i class="bi bi-book"></i></span>
+                    <span class="txt-link">Adicionar Livro</span>
+                </a>
+            </li>
+            <li class="item-menu ativo">
+                <a href="Estoque.html">
+                    <span class="icon"><i class="bi bi-box"></i></span>
+                    <span class="txt-link">Estoque</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="Conta.html">
+                    <span class="icon"><i class="bi bi-person-circle"></i></span>
+                    <span class="txt-link">Conta</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/templatesLogin/Login.html" id="logout-link" onclick="logout(event)">
+                    <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content inicialadmin">
+        <div class="form-container">
+            <h2>Adicionar Livro</h2>
+            <form id="add-book-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="book-title">Título do Livro</label>
+                        <input type="text" id="book-title" placeholder="Título do Livro">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-author">Autor do Livro</label>
+                        <input type="text" id="book-author" placeholder="Autor do Livro">
+                    </div>
+                    <div class="form-group">
+                        <label for="publication_date">Data Publicação</label>
+                        <input type="text" id="publication_date" placeholder="Data Publicação">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-isbn">ISBN</label>
+                        <input type="text" id="book-isbn" placeholder="ISBN">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-publisher">Editora</label>
+                        <input type="text" id="book-publisher" placeholder="Editora">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-genre">Gênero</label>
+                        <input type="text" id="book-genre" placeholder="Gênero">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-pages">Páginas</label>
+                        <input type="number" id="book-pages" placeholder="Páginas">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-language">Idioma</label>
+                        <input type="text" id="book-language" placeholder="Idioma">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-summary">Sumário</label>
+                        <input type="text" id="book-summary" placeholder="Sumário">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-image">URL da Imagem</label>
+                        <input type="text" id="book-image" placeholder="URL da Imagem">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-price">Preço do Livro</label>
+                        <input type="number" id="book-price" placeholder="Preço do Livro">
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-save">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/menu.js"></script>
+</body>
+</html>
