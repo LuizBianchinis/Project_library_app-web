@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Carinho</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Pagina Meus Livros</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
@@ -15,32 +15,32 @@
             <i class="bi bi-list" id="btn-exp"></i>
         </div><!--btn-expandir-->
         <ul>
-            <li class="item-menu">
-                <a href="Inicial.html">
+            <li class="item-menu ativo">
+                <a href="inicial_user.html">
                     <span class="icon"><i class="bi bi-house-door"></i></span>
                     <span class="txt-link">Início</span>
                 </a>
             </li>
-            <li class="item-menu ativo">
+            <li class="item-menu">
                 <a href="carinho.html">
                     <span class="icon"><i class="bi bi-bag"></i></span>
                     <span class="txt-link">Carinho</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="MeusLivros.html">
+                <a href="meus_livros.html">
                     <span class="icon"><i class="bi bi-book"></i></span>
                     <span class="txt-link">Meus livros</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="Conta.html">
+                <a href="conta_user.html">
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                     <span class="txt-link">Conta</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="/templatesLogin/Login.html" id="logout-link" onclick="logout(event)">
+                <a href="login.html" id="logout-link" onclick="logout(event)">
                     <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                     <span class="txt-link">Sair</span>
                 </a>
@@ -48,10 +48,9 @@
         </ul>
     </nav>
     <div class="content">
-        <h1>Carinho</h1>
-        <div id="cart-items"></div>
+        <h1>Meus Livros</h1>
+        <!-- Conteúdo do Meus Livros -->
     </div>
-    <script src="/menu.js"></script>
-    <script src="/carts.js"></script>
+    <script src="/js/menu.js"></script>
 </body>
 </html>

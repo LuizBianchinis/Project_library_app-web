@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Estoque</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
@@ -15,32 +15,26 @@
             <i class="bi bi-list" id="btn-exp"></i>
         </div><!--btn-expandir-->
         <ul>
-            <li class="item-menu">
-                <a href="InicialAdmin.html">
+            <li class="item-menu ativo">
+                <a href="inicial_admin.html">
                     <span class="icon"><i class="bi bi-house-door"></i></span>
                     <span class="txt-link">Início</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="Carinho.html">
-                    <span class="icon"><i class="bi bi-bag"></i></span>
-                    <span class="txt-link">Carinho</span>
-                </a>
-            </li>
-            <li class="item-menu ativo">
-                <a href="Estoque.html">
+                <a href="estoque.html">
                     <span class="icon"><i class="bi bi-box"></i></span>
                     <span class="txt-link">Estoque</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="Conta.html">
+                <a href="conta_admin.html">
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                     <span class="txt-link">Conta</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="/templatesLogin/Login.html" id="logout-link" onclick="logout(event)">
+                <a href="login.html" id="logout-link" onclick="logout(event)">
                     <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                     <span class="txt-link">Sair</span>
                 </a>
@@ -147,6 +141,6 @@
             <div class="book-catalog" id="book-catalog"></div>
         </div>
     </div>
-    <script src="/menu.js"></script>
+    <script src="/js/menu.js"></script>
 </body>
 </html>
