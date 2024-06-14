@@ -124,6 +124,7 @@ function redefinirEstoque(id) {
         }
 
         document.getElementById('campo-redefinir-' + id).style.display = 'none';
+        document.getElementById('novo-estoque-' + id).value = '';
     }
 }
 
@@ -139,57 +140,50 @@ document.addEventListener('click', function(event) {
     });
 });
 
-function addBook() {
-    var title = document.getElementById('book-title').value;
-    var author = document.getElementById('book-author').value;
-    var publication_date = document.getElementById('publication_date').value;
-    var isbn = document.getElementById('book-isbn').value;
-    var publisher = document.getElementById('book-publisher').value;
-    var genre = document.getElementById('book-genre').value;
-    var pages = document.getElementById('book-pages').value;
-    var language = document.getElementById('book-language').value;
-    var summary = document.getElementById('book-summary').value;
-    var price = document.getElementById('book-price').value;
-    var image = document.getElementById('book-image').value;
+document.getElementById('adicionarLivroForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const titulo = document.getElementById('titulo').value;
+    const autor = document.getElementById('autor').value;
+    const dataPublicacao = document.getElementById('dataPublicacao').value;
+    const isbn = document.getElementById('isbn').value;
+    const editora = document.getElementById('editora').value;
+    const genero = document.getElementById('genero').value;
+    const paginas = document.getElementById('paginas').value;
+    const idioma = document.getElementById('idioma').value;
+    const urlImagem = document.getElementById('urlImagem').value;
+    const sumario = document.getElementById('sumario').value;
+    const preco = document.getElementById('preco').value;
+    const estoque = document.getElementById('estoque').value;
 
-    // Defina o estoque inicial
-    var stock = 0;
+    const bookCatalog = document.getElementById('bookCatalog');
+    const newBook = document.createElement('div');
+    newBook.classList.add('book-item');
 
-    var bookId = title.toLowerCase().replace(/ /g, '-');
-
-    var newBookHTML = `
-        <div class="book-item">
-            <img src="${image}" alt="Capa do livro '${title}'" style="width:150px;height:auto;">
-            <h2>${title}</h2>
-            <p>${author}</p>
-            <p>R$ ${price}</p>
-            <button class="btn-redefinir-estoque" id="btn-redefinir-${bookId}" data-id="${bookId}" onclick="mostrarCampoRedefinirEstoque('${bookId}')">Redefinir Estoque</button>
-            <div class="campo-redefinir" id="campo-redefinir-${bookId}" style="display: none;">
-                <input type="number" id="novo-estoque-${bookId}" placeholder="Novo Estoque">
-                <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${bookId}')">Confirmar</button>
-            </div>
-            <p class="estoque-info" id="estoque-${bookId}" data-id="${bookId}">Estoque: ${stock}</p>
+    newBook.innerHTML = `
+        <img src="${urlImagem}" alt="Capa do livro '${titulo}'" style="width:150px;height:auto;>
+        <h2>${titulo}</h2>
+        <p>${autor}</p>
+        <p>R$ ${preco}</p>
+        <button class="btn-redefinir-estoque" onclick="mostrarCampoRedefinirEstoque('${isbn}')">Redefinir Estoque</button>
+        <div class="campo-redefinir" id="campo-redefinir-${isbn}" style="display: none;">
+            <input type="number" id="novo-estoque-${isbn}" placeholder="Novo Estoque">
+            <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${isbn}')">Confirmar</button>
         </div>
+        <p class="estoque-info" id="estoque-${isbn}" data-id="${isbn}">Estoque: ${estoque}</p>
     `;
 
-    var bookCatalog = document.getElementById('book-catalog');
-    if (bookCatalog) {
-        bookCatalog.insertAdjacentHTML('beforeend', newBookHTML);
-    } else {
-        console.error('Elemento com ID "book-catalog" não encontrado.');
-    }
+    bookCatalog.appendChild(newBook);
 
-    document.getElementById('book-title').value = '';
-    document.getElementById('book-author').value = '';
-    document.getElementById('publication_date').value = '';
-    document.getElementById('book-isbn').value = '';
-    document.getElementById('book-publisher').value = '';
-    document.getElementById('book-genre').value = '';
-    document.getElementById('book-pages').value = '';
-    document.getElementById('book-language').value = '';
-    document.getElementById('book-summary').value = '';
-    document.getElementById('book-price').value = '';
-    document.getElementById('book-image').value = '';
-}
+    document.getElementById('adicionarLivroForm').reset();
+});
 
+// function mostrarCampoRedefinirEstoque(isbn) {
+//     document.getElementById(`campo-redefinir-${isbn}`).style.display = 'block';
+// }
 
+// function redefinirEstoque(isbn) {
+//     const novoEstoque = document.getElementById(`novo-estoque-${isbn}`).value;
+//     document.getElementById(`estoque-${isbn}`).innerText = `Estoque: ${novoEstoque}`;
+//     document.getElementById(`campo-redefinir-${isbn}`).style.display = 'none';
+// }

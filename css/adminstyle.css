@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+}
+
+nav.menu-lateral {
+    width: 250px;
+    height: 100%;
+    background-color: #0052cc;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: .5s;
+}
+
+nav.menu-lateral .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav.menu-lateral .logo {
+    width: 150px;
+}
+
+nav.menu-lateral .menu-header i {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul li.item-menu {
+    transition: .2s;
+}
+
+ul li.ativo {
+    background-color: #0033a0;
+}
+
+ul li.item-menu:hover {
+    background: #004bb5;
+}
+
+ul li.item-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+ul li.item-menu a .icon {
+    margin-right: 15px;
+}
+
+ul li.item-menu a .icon > i {
+    font-size: 20px;
+}
+
+.content {
+    flex: 1;
+    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancel, .btn-save {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #ccc;
+}
+
+.btn-cancel:hover {
+    background-color: #bbb;
+}
+
+.btn-save {
+    background-color: #0052cc;
+    color: #fff;
+}
+
+.btn-save:hover {
+    background-color: #0033a0;
+}

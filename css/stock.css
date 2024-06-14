@@ -26,6 +26,7 @@ nav.menu-lateral {
     position: fixed;
     top: 0;
     left: 0;
+    overflow: hidden;
     transition: .5s;
 }
 
@@ -40,31 +41,25 @@ nav.menu-lateral .logo {
     width: 150px;
 }
 
-nav.menu-lateral .menu-header i {
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-}
-
-ul {
+nav.menu-lateral ul {
     list-style-type: none;
     padding: 0;
     margin-top: 20px;
 }
 
-ul li.item-menu {
+nav.menu-lateral ul li.item-menu {
     transition: .2s;
 }
 
-ul li.ativo {
+nav.menu-lateral ul li.ativo {
     background-color: #0033a0;
 }
 
-ul li.item-menu:hover {
+nav.menu-lateral ul li.item-menu:hover {
     background: #004bb5;
 }
 
-ul li.item-menu a {
+nav.menu-lateral ul li.item-menu a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
@@ -74,11 +69,11 @@ ul li.item-menu a {
     margin-bottom: 10px;
 }
 
-ul li.item-menu a .icon {
+nav.menu-lateral ul li.item-menu a .icon {
     margin-right: 15px;
 }
 
-ul li.item-menu a .icon > i {
+nav.menu-lateral ul li.item-menu a .icon > i {
     font-size: 20px;
 }
 
@@ -86,77 +81,115 @@ ul li.item-menu a .icon > i {
     flex: 1;
     margin-left: 250px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     padding: 20px;
+    background-color: #f5f5f5;
 }
 
-.form-container {
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
+.inicialadmin h1 {
+    font-size: 2.3rem;
+    color: #242121;
     margin-bottom: 20px;
 }
 
-.form-grid {
+.book-catalog {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+    width: 100%;
+    max-width: 1200px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.book-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.form-group label {
+.book-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.book-item h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.book-item p {
+    color: #555;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
-.form-group input {
+.book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    width: 300px;
+}
+
+
+.btn-redefinir-estoque {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-redefinir-estoque:hover {
+    background-color: #0056b3;
+}
+
+.campo-redefinir {
+    margin-top: 10px;
+}
+
+.campo-redefinir input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-cancel, .btn-save {
-    padding: 10px 20px;
-    font-size: 16px;
+.btn-confirmar-redefinir {
+    background-color: #28a745;
+    color: #fff;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.btn-cancel {
-    background-color: #ccc;
+.btn-confirmar-redefinir:hover {
+    background-color: #218838;
 }
 
-.btn-cancel:hover {
-    background-color: #bbb;
-}
-
-.btn-save {
-    background-color: #0052cc;
-    color: #fff;
-}
-
-.btn-save:hover {
-    background-color: #0033a0;
+.estoque-info {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
 }
