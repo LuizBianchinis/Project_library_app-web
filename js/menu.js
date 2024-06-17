@@ -1,22 +1,18 @@
 // Seleciona os itens clicados
-var menuItem = document.querySelectorAll('.item-menu');
+const menuItem = document.querySelectorAll('.item-menu');
 
-function selectLink(){
-    menuItem.forEach((item) =>
-        item.classList.remove('ativo')
-    );
+function selectLink() {
+    menuItem.forEach(item => item.classList.remove('ativo'));
     this.classList.add('ativo');
 }
 
-menuItem.forEach((item) =>
-    item.addEventListener('click', selectLink)
-);
+menuItem.forEach(item => item.addEventListener('click', selectLink));
 
 // Expandir o menu
-var btnExp = document.querySelector('#btn-exp');
-var menuSide = document.querySelector('.menu-lateral');
+const btnExp = document.querySelector('#btn-exp');
+const menuSide = document.querySelector('.menu-lateral');
 
-btnExp.addEventListener('click', function(){
+btnExp.addEventListener('click', () => {
     menuSide.classList.toggle('expandir');
 });
 
@@ -26,11 +22,11 @@ function adicionarAoCarrinho(titulo, preco, id) {
     let btn = document.getElementById('btn-' + id);
     let estoqueAtual = parseInt(btn.getAttribute('data-estoque'));
     let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
-    
+
     if (estoqueAtual > 0) {
         carrinho.push({ titulo, preco, id });
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        
+
         estoqueAtual--;
         estoque[id] = estoqueAtual;
         localStorage.setItem('estoque', JSON.stringify(estoque));
@@ -52,18 +48,15 @@ function removerDoCarrinho(index, id) {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     carrinho.splice(index, 1);
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  
+
     if (id) {
         let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
         estoque[id] = (estoque[id] || 0) + 1;
         localStorage.setItem('estoque', JSON.stringify(estoque));
     }
-  
-    window.location.reload();
-  }
-  
-document.addEventListener('DOMContentLoaded', carregarEstoque);
 
+    window.location.reload();
+}
 
 function carregarEstoque() {
     let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
@@ -83,7 +76,7 @@ function carregarEstoqueAdmin() {
         let id = item.getAttribute('data-id');
         if (estoque[id] !== undefined) {
             item.innerText = 'Estoque: ' + estoque[id];
-            let btn = document.getElementById('btn-' + id);
+            let btn = document.getElementById('btn-redefinir-' + id);
             btn.setAttribute('data-estoque', estoque[id]);
 
             if (estoque[id] === 0) {
@@ -98,8 +91,6 @@ function carregarEstoqueAdmin() {
         }
     });
 }
-
-document.addEventListener('DOMContentLoaded', carregarEstoqueAdmin);
 
 function mostrarCampoRedefinirEstoque(id) {
     let campoRedefinir = document.getElementById('campo-redefinir-' + id);
@@ -128,7 +119,7 @@ function redefinirEstoque(id) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarEstoque);
+document.addEventListener('DOMContentLoaded', carregarEstoqueAdmin);
 
 document.addEventListener('click', function(event) {
     let elementosOcultaveis = document.querySelectorAll('[id^="campo-redefinir-"]');
@@ -142,7 +133,7 @@ document.addEventListener('click', function(event) {
 
 document.getElementById('adicionarLivroForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    
+
     const titulo = document.getElementById('titulo').value;
     const autor = document.getElementById('autor').value;
     const dataPublicacao = document.getElementById('dataPublicacao').value;
@@ -156,16 +147,47 @@ document.getElementById('adicionarLivroForm').addEventListener('submit', functio
     const preco = document.getElementById('preco').value;
     const estoque = document.getElementById('estoque').value;
 
+    fetch('/v1/books/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: titulo,
+            author: autor,
+            publication_date: dataPublicacao,
+            isbn: isbn,
+            publisher: editora,
+            genre: genero,
+            pages: paginas,
+            language: idioma,
+            summary: sumario,
+            image_url: urlImagem,
+            price: preco,
+            stock: estoque
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status_code === 200) {
+            alert('Livro adicionado com sucesso!');
+            location.reload();
+        } else {
+            alert('Erro ao adicionar livro: ' + data.message);
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+
     const bookCatalog = document.getElementById('bookCatalog');
     const newBook = document.createElement('div');
     newBook.classList.add('book-item');
 
     newBook.innerHTML = `
-        <img src="${urlImagem}" alt="Capa do livro '${titulo}'" style="width:150px;height:auto;>
+        <img src="${urlImagem}" alt="Capa do livro '${titulo}'" style="width:150px;height:auto;">
         <h2>${titulo}</h2>
         <p>${autor}</p>
         <p>R$ ${preco}</p>
-        <button class="btn-redefinir-estoque" onclick="mostrarCampoRedefinirEstoque('${isbn}')">Redefinir Estoque</button>
+        <button class="btn-redefinir-estoque" id="btn-redefinir-${isbn}" data-estoque="${estoque}" onclick="mostrarCampoRedefinirEstoque('${isbn}')">Redefinir Estoque</button>
         <div class="campo-redefinir" id="campo-redefinir-${isbn}" style="display: none;">
             <input type="number" id="novo-estoque-${isbn}" placeholder="Novo Estoque">
             <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${isbn}')">Confirmar</button>
@@ -178,12 +200,34 @@ document.getElementById('adicionarLivroForm').addEventListener('submit', functio
     document.getElementById('adicionarLivroForm').reset();
 });
 
-// function mostrarCampoRedefinirEstoque(isbn) {
-//     document.getElementById(`campo-redefinir-${isbn}`).style.display = 'block';
-// }
-
-// function redefinirEstoque(isbn) {
-//     const novoEstoque = document.getElementById(`novo-estoque-${isbn}`).value;
-//     document.getElementById(`estoque-${isbn}`).innerText = `Estoque: ${novoEstoque}`;
-//     document.getElementById(`campo-redefinir-${isbn}`).style.display = 'none';
-// }
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/v1/books/query', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status_code === 200) {
+            const bookCatalog = document.getElementById('bookCatalog');
+            data.data.forEach(book => {
+                const newBook = document.createElement('div');
+                newBook.classList.add('book-item');
+                newBook.innerHTML = `
+                    <img src="${book.image_url}" alt="Capa do livro '${book.title}'" style="width:150px;height:auto;">
+                    <h2>${book.title}</h2>
+                    <p>${book.author}</p>
+                    <p>R$ ${book.price}</p>
+                    <button class="btn-redefinir-estoque" id="btn-redefinir-${book.isbn}" data-estoque="${book.stock}" onclick="mostrarCampoRedefinirEstoque('${book.isbn}')">Redefinir Estoque</button>
+                    <div class="campo-redefinir" id="campo-redefinir-${book.isbn}" style="display: none;">
+                        <input type="number" id="novo-estoque-${book.isbn}" placeholder="Novo Estoque">
+                        <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${book.isbn}')">Confirmar</button>
+                    </div>
+                    <p class="estoque-info" id="estoque-${book.isbn}" data-id="${book.isbn}">Estoque: ${book.stock}</p>
+                `;
+                bookCatalog.appendChild(newBook);
+            });
+        } else {
+            alert('Erro ao carregar livros: ' + data.message);
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+});

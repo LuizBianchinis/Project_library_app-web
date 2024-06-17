@@ -13,7 +13,6 @@
     <nav class="menu-lateral">
         <div class="btn-expandir">
             <i class="bi bi-list" id="btn-exp"></i>
-        </div><!--btn-expandir-->
         </div>
         <ul>
             <li class="item-menu ativo">
@@ -45,59 +44,62 @@
     <div class="content inicialadmin">
         <div class="form-container">
             <h2>Adicionar Livro</h2>
-            <form id="add-book-form">
+            <form id="adicionarLivroForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="book-title">Título do Livro</label>
-                        <input type="text" id="book-title" placeholder="Título do Livro" required>
+                        <label for="titulo">Título do Livro</label>
+                        <input type="text" id="titulo" placeholder="Título do Livro" required>
                     </div>
                     <div class="form-group">
-                        <label for="book-author">Autor do Livro</label>
-                        <input type="text" id="book-author" placeholder="Autor do Livro" required>
+                        <label for="autor">Autor do Livro</label>
+                        <input type="text" id="autor" placeholder="Autor do Livro" required>
                     </div>
                     <div class="form-group">
-                        <label for="publication_date">Data Publicação</label>
-                        <input type="date" id="publication_date" placeholder="Data Publicação">
+                        <label for="dataPublicacao">Data Publicação</label>
+                        <input type="date" id="dataPublicacao" placeholder="Data Publicação">
                     </div>
                     <div class="form-group">
-                        <label for="book-isbn">ISBN</label>
-                        <input type="text" id="book-isbn" placeholder="ISBN">
+                        <label for="isbn">ISBN</label>
+                        <input type="text" id="isbn" placeholder="ISBN">
                     </div>
                     <div class="form-group">
-                        <label for="book-publisher">Editora</label>
-                        <input type="text" id="book-publisher" placeholder="Editora">
+                        <label for="editora">Editora</label>
+                        <input type="text" id="editora" placeholder="Editora">
                     </div>
                     <div class="form-group">
-                        <label for="book-genre">Gênero</label>
-                        <input type="text" id="book-genre" placeholder="Gênero">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" placeholder="Gênero">
                     </div>
                     <div class="form-group">
-                        <label for="book-pages">Páginas</label>
-                        <input type="number" id="book-pages" placeholder="Páginas">
+                        <label for="paginas">Páginas</label>
+                        <input type="number" id="paginas" placeholder="Páginas">
                     </div>
                     <div class="form-group">
-                        <label for="book-language">Idioma</label>
-                        <input type="text" id="book-language" placeholder="Idioma">
+                        <label for="idioma">Idioma</label>
+                        <input type="text" id="idioma" placeholder="Idioma">
                     </div>
                     <div class="form-group">
-                        <label for="book-summary">Sumário</label>
-                        <input type="text" id="book-summary" placeholder="Sumário" required>
+                        <label for="sumario">Resumo</label>
+                        <textarea id="sumario" placeholder="Resumo"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="book-image">URL da Imagem</label>
-                        <input type="text" id="book-image" placeholder="URL da Imagem" required>
+                        <label for="urlImagem">URL da Imagem</label>
+                        <input type="url" id="urlImagem" placeholder="URL da Imagem">
                     </div>
                     <div class="form-group">
-                        <label for="book-price">Preço do Livro</label>
-                        <input type="number" id="book-price" placeholder="Preço do Livro" required>
+                        <label for="preco">Preço</label>
+                        <input type="number" id="preco" placeholder="Preço">
+                    </div>
+                    <div class="form-group">
+                        <label for="estoque">Estoque</label>
+                        <input type="number" id="estoque" placeholder="Estoque">
                     </div>
                 </div>
-                <div class="form-buttons">
-                    <button type="submit" class="btn-save">Adicionar</button>
-                    <button id="cancelar" class="btn-cancel">Cancelar</button>
-                </div>
+                <button type="submit">Adicionar Livro</button>
             </form>
         </div>
+        <div id="bookCatalog" class="book-catalog"></div>
     </div>
+    <script src="/js/menu.js"></script>
 </body>
 </html>
