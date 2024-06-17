@@ -9,9 +9,7 @@
 </head>
 <body>
     <div class="login-wrapper">
-        <div class="login-image">
-
-        </div>
+        <div class="login-image"></div>
         <div class="login-form-container">
             <div class="login-form">
                 <h2>Bem vindo de volta!</h2>
@@ -24,35 +22,6 @@
             </div>
         </div>
     </div>
-    <script>
-        async function loginUser(email, password) {
-            const url = 'http://127.0.0.1:5000/v1/auth/login';
-            const requestBody = { email: email, password: password };
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(requestBody)
-                });
-
-                if (!response.ok) throw new Error(`Erro: ${response.status}`);
-
-                const responseData = await response.json();
-                alert(responseData.message);
-            } catch (error) {
-                console.error('Erro ao fazer a requisição:', error);
-                alert('Erro ao fazer login. Por favor, tente novamente.');
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            loginUser(email, password);
-        });
-    </script>
     <script src="/js/login.js"></script>
 </body>
 </html>

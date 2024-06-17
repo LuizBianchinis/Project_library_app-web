@@ -3,7 +3,7 @@ async function hashPassword(login, password) {
   const { crypto } = window;
 
   // Converte a senha em bytes
-  const passwordBytes = new TextEncoder().encode(login+password);
+  const passwordBytes = new TextEncoder().encode(login + password);
 
   // Gera a hash usando o algoritmo SHA-256
   const hashBuffer = await crypto.subtle.digest('SHA-256', passwordBytes);
@@ -18,13 +18,18 @@ async function hashPassword(login, password) {
 async function loginUser(email, password) {
   const url = 'http://127.0.0.1:5000/v1/auth/login'; 
   
-  const hashedPassword = await hashPassword(email ,password);
-
-  const requestBody = {
-    hash: hashedPassword
-  };
-
   try {
+    console.log('Hashing password...');
+    const hashedPassword = await hashPassword(email, password);
+    console.log('Password hashed:', hashedPassword);
+
+    const requestBody = {
+      email, // Inclui o email no corpo da solicitação
+      hash: hashedPassword
+    };
+
+    console.log('Request body:', requestBody); // Log para depuração
+
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -33,6 +38,7 @@ async function loginUser(email, password) {
       body: JSON.stringify(requestBody)
     });
 
+    console.log('Server response status:', response.status);
     if (!response.ok) {
       throw new Error(`Erro: ${response.status}`);
     }
@@ -48,11 +54,15 @@ async function loginUser(email, password) {
   }
 }
 
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-loginUser(email, password);
+    console.log('Form submitted with email:', email, 'and password:', password);
+
+    loginUser(email, password);
+  });
 });
