@@ -204,57 +204,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-        // Função para carregar os livros do backend e renderizar na página
-        function carregarLivros() {
-            fetch('http://127.0.0.1:5000/v1/books/query')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao carregar os livros');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const bookCatalog = document.querySelector('.book-catalog');
-                    bookCatalog.innerHTML = ''; // Limpar o conteúdo existente
-    
-                    if (Array.isArray(data)) {
-                        data.forEach(book => {
-                            const bookItem = document.createElement('div');
-                            bookItem.classList.add('book-item');
-    
-                            bookItem.innerHTML = `
-                                <img src="${book.cover_image}" alt="Capa do livro ${book.title}" style="width:150px;height:auto;">
-                                <h2>${book.title}</h2>
-                                <p>${book.author}</p>
-                                <p>R$ ${book.price}</p>
-                                <button class="btn-redefinir-estoque" data-id="${book.id}" onclick="mostrarCampoRedefinirEstoque('${book.id}')">Redefinir Estoque</button>
-                                <div class="campo-redefinir" id="campo-redefinir-${book.id}" style="display: none;">
-                                    <input type="number" id="novo-estoque-${book.id}" placeholder="Novo Estoque">
-                                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${book.id}')">Confirmar</button>
-                                </div>
-                                <p class="estoque-info" id="estoque-${book.id}" data-id="${book.id}">Estoque: ${book.stock}</p>
-                                <a href="atualizar_livro.html?id=${book.id}" class="btn-atualizar-livro">Atualizar Livro</a>
-                                <button class="btn-excluir-livro" data-id="${book.id}" onclick="excluirLivro('${book.id}')">Excluir Livro</button>
-                            `;
-    
-                            bookCatalog.appendChild(bookItem);
-                        });
-                    } else {
-                        console.error('Erro ao carregar os livros: Os dados retornados não são um array', data);
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar os livros:', error);
-                    // Tratar erro, se necessário
+// Função para carregar os livros do backend e renderizar na página
+function carregarLivros() {
+    fetch('http://127.0.0.1:5000/v1/books/query')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os livros');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const bookCatalog = document.querySelector('.book-catalog');
+            bookCatalog.innerHTML = ''; // Limpar o conteúdo existente
+
+            if (Array.isArray(data.data)) {
+                data.data.forEach(book => {
+                    const bookItem = document.createElement('div');
+                    bookItem.classList.add('book-item');
+
+                    bookItem.innerHTML = `
+                        <img src="${book.cover_image}" alt="Capa do livro ${book.title}" style="width:150px;height:auto;">
+                        <h2>${book.title}</h2>
+                        <p>${book.author}</p>
+                        <p>R$ ${book.price}</p>
+                        <button class="btn-redefinir-estoque" data-id="${book.id}" onclick="mostrarCampoRedefinirEstoque('${book.id}')">Redefinir Estoque</button>
+                        <div class="campo-redefinir" id="campo-redefinir-${book.id}" style="display: none;">
+                            <input type="number" id="novo-estoque-${book.id}" placeholder="Novo Estoque">
+                            <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('${book.id}')">Confirmar</button>
+                        </div>
+                        <p class="estoque-info" id="estoque-${book.id}" data-id="${book.id}">Estoque: ${book.stock}</p>
+                        <a href="atualizar_livro.html?id=${book.id}" class="btn-atualizar-livro">Atualizar Livro</a>
+                        <button class="btn-excluir-livro" data-id="${book.id}" onclick="excluirLivro('${book.id}')">Excluir Livro</button>
+                    `;
+
+                    bookCatalog.appendChild(bookItem);
                 });
-        }
-<<<<<<< HEAD
-    
-        // Chamada inicial para carregar os livros ao carregar a página
-        carregarLivros();
-    });
-=======
-    })
-    .catch(error => console.error('Erro:', error));
+            } else {
+                console.error('Erro ao carregar os livros: Os dados retornados não são um array', data);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar os livros:', error);
+            // Tratar erro, se necessário
+        });
+}
+
+// Chamada inicial para carregar os livros ao carregar a página
+carregarLivros();
 });
->>>>>>> 01b786c61575bb14258096906dc85061162cbbf3
