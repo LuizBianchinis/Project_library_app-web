@@ -237,3 +237,17 @@ h2 {
     text-align: right;
     flex: 1;
 }
+
+.btn-comprar{
+    background-color: rgba(0, 0, 255, 0.836);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-comprar:hover {
+    background-color: darkblue;
+}
