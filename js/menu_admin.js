@@ -17,48 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuSide.classList.toggle('expandir');
     });
 
-    // Adicionar ao carrinho
-    function adicionarAoCarrinho(titulo, preco, id) {
-        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-        let btn = document.getElementById('btn-' + id);
-        let estoqueAtual = parseInt(btn.getAttribute('data-estoque'));
-        let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
-
-        if (estoqueAtual > 0) {
-            carrinho.push({ titulo, preco, id });
-            localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-            estoqueAtual--;
-            estoque[id] = estoqueAtual;
-            localStorage.setItem('estoque', JSON.stringify(estoque));
-
-            btn.setAttribute('data-estoque', estoqueAtual);
-            document.getElementById('estoque-' + id).innerText = 'Estoque: ' + estoqueAtual;
-
-            if (estoqueAtual === 0) {
-                btn.disabled = true;
-                btn.innerText = 'Esgotado';
-                btn.classList.add('esgotado');
-            }
-        } else {
-            alert('Estoque insuficiente!');
-        }
-    }
-
-    function removerDoCarrinho(index, id) {
-        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-        carrinho.splice(index, 1);
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-        if (id) {
-            let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
-            estoque[id] = (estoque[id] || 0) + 1;
-            localStorage.setItem('estoque', JSON.stringify(estoque));
-        }
-
-        window.location.reload();
-    }
-
     function carregarEstoque() {
         let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
 
