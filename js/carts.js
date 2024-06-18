@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
           let itemDiv = document.createElement('div');
           itemDiv.className = 'cart-item';
           itemDiv.innerHTML = `
-              <h2>${item.titulo}</h2>
-              <p>${item.preco}</p>
-              <button onclick="removerDoCarrinho(${index}, '${item.id}')">Excluir</button>
+                <h2 class="item-title">${item.titulo}</h2>
+                <p class="item-price">${item.preco}</p>
+             <button class="btn-excluir" onclick="removerDoCarrinho(${index}, '${item.id}')">Excluir</button>
           `;
           cartItemsDiv.appendChild(itemDiv);
       });
