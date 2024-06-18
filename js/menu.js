@@ -248,7 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Tratar erro, se necessário
                 });
         }
+<<<<<<< HEAD
     
         // Chamada inicial para carregar os livros ao carregar a página
         carregarLivros();
     });
+=======
+    })
+    .catch(error => console.error('Erro:', error));
+});
+>>>>>>> 01b786c61575bb14258096906dc85061162cbbf3
