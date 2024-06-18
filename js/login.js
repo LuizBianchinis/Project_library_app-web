@@ -1,22 +1,14 @@
 async function hashPassword(login, password) {
-  // Importa o módulo Crypto para gerar a hash
   const { crypto } = window;
-
-  // Converte a senha em bytes
   const passwordBytes = new TextEncoder().encode(login + password);
-
-  // Gera a hash usando o algoritmo SHA-256
   const hashBuffer = await crypto.subtle.digest('SHA-256', passwordBytes);
-
-  // Converte a hash para uma string hexadecimal
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-
   return hashHex;
 }
 
 async function loginUser(email, password) {
-  const url = 'http://127.0.0.1:5000/v1/auth/login'; 
+  const url = 'http://127.0.0.1:5000/v1/auth/login';
   
   try {
     console.log('Hashing password...');
@@ -24,11 +16,11 @@ async function loginUser(email, password) {
     console.log('Password hashed:', hashedPassword);
 
     const requestBody = {
-      email, // Inclui o email no corpo da solicitação
+      email, 
       hash: hashedPassword
     };
 
-    console.log('Request body:', requestBody); // Log para depuração
+    console.log('Request body:', requestBody);
 
     const response = await fetch(url, {
       method: 'POST',
@@ -46,12 +38,28 @@ async function loginUser(email, password) {
     const responseData = await response.json();
     console.log(responseData);
 
-    alert(responseData.message);
+    // Configura o cookie com o token de autenticação
+    if (responseData.token) {
+      setCookie('authToken', responseData.token, 1); // Define o cookie por 1 dia
+      alert('Login bem-sucedido');
+    } else {
+      alert('Erro ao fazer login. Token não recebido.');
+    }
 
   } catch (error) {
     console.error('Erro ao fazer a requisição:', error);
     alert('Erro ao fazer login. Por favor, tente novamente.');
   }
+}
+
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 document.addEventListener('DOMContentLoaded', function() {
