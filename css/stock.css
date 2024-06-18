@@ -143,7 +143,7 @@ nav.menu-lateral ul li.item-menu a .icon > i {
 }
 
 
-.btn-redefinir-estoque {
+.btn-redefinir-estoque, .btn-atualizar-livro, .btn-apagar-livro {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -162,7 +162,7 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     background-color: #0056b3;
 }
 
-.campo-redefinir {
+.campo-redefinir, .btn-atualizar-livro, .btn-apagar-livro {
     margin-top: 10px;
 }
 

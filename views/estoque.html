@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Estoque</title>
-    <link rel="stylesheet" href="/css/stock.css">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="/css/adminstyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
@@ -18,7 +18,13 @@
             <li class="item-menu">
                 <a href="adicionar_livro.html">
                     <span class="icon"><i class="bi bi-house-door"></i></span>
-                    <span class="txt-link">Início</span>
+                    <span class="txt-link">Adicionar Livros</span>
+                </a>
+            </li>
+            <li class="item-menu ativo">
+                <a href="atualizar_livro.html">
+                    <span class="icon"><i class="bi bi-house-door"></i></span>
+                    <span class="txt-link">Atualizar Livros</span>
                 </a>
             </li>
             <li class="item-menu ativo">
@@ -43,87 +49,11 @@
     </nav>
 
     <div class="content inicialadmin">
-        <h1>Estoque</h1>
         <div class="book-catalog">
-            <div class="book-item">
-                <img src="/images/lv252256_1.webp" alt="Capa do livro 'Código Limpo'" style="width:150px;height:auto;">
-                <h2>Código Limpo</h2>
-                <p>Robert C. Martin</p>
-                <p>R$ 107,00</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-codigo-limpo" data-id="codigo-limpo" onclick="mostrarCampoRedefinirEstoque('codigo-limpo')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-codigo-limpo" style="display: none;">
-                    <input type="number" id="novo-estoque-codigo-limpo" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('codigo-limpo')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-codigo-limpo" data-id="codigo-limpo">Estoque: 8</p>
-            </div>  
-
-            <div class="book-item">
-                <img src="/images/LV477687.webp" alt="Capa do livro 'Redes de computadores'" style="width:150px;height:auto;">
-                <h2>Redes de computadores</h2>
-                <p>Antonio Eduardo Marques da Silva</p>
-                <p>R$ 42,20</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-redes-computadores" data-id="redes-computadores" onclick="mostrarCampoRedefinirEstoque('redes-computadores')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-redes-computadores" style="display: none;">
-                    <input type="number" id="novo-estoque-redes-computadores" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('redes-computadores')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-redes-computadores" data-id="redes-computadores">Estoque: 0</p>
-            </div>
-
-            <div class="book-item">
-                <img src="/images/LV515293.webp" alt="Capa do livro 'Python para Excel'" style="width:150px;height:auto;">
-                <h2>Python para Excel</h2>
-                <p>Felix Zumstein</p>
-                <p>R$ 67,40</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-python-excel" data-id="python-excel" onclick="mostrarCampoRedefinirEstoque('python-excel')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-python-excel" style="display: none;">
-                    <input type="number" id="novo-estoque-python-excel" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('python-excel')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-python-excel" data-id="python-excel">Estoque: 5</p>
-            </div>
-            
-            <div class="book-item">
-                <img src="/images/LV515296.webp" alt="Capa do livro 'Indo Além com IA'" style="width:150px;height:auto;">
-                <h2>Indo Além com IA</h2>
-                <p>Thomas H. Davenport</p>
-                <p>R$ 56,60</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-alem-ia" data-id="alem-ia" onclick="mostrarCampoRedefinirEstoque('alem-ia')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-alem-ia" style="display: none;">
-                    <input type="number" id="novo-estoque-alem-ia" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('alem-ia')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-alem-ia" data-id="alem-ia">Estoque: 0</p>
-            </div>
-            
-            <div class="book-item">
-                <img src="/images/LV516132.webp" alt="Capa do livro 'Web 3.0'" style="width:150px;height:auto;">
-                <h2>Web 3.0</h2>
-                <p>Maria Olívia Rampim</p>
-                <p>R$ 43,20</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-web-3.0" data-id="web-3.0" onclick="mostrarCampoRedefinirEstoque('web-3.0')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-web-3.0" style="display: none;">
-                    <input type="number" id="novo-estoque-web-3.0" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('web-3.0')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-web-3.0" data-id="web-3.0">Estoque: 0</p>
-            </div>
-            
-            <div class="book-item">
-                <img src="/images/LV518250.webp" alt="Capa do livro 'ABC da Robótica'" style="width:150px;height:auto;">
-                <h2>ABC da Robótica</h2>
-                <p>Carlos Seabra & Sérgio Maciel</p>
-                <p>R$ 74,00</p>
-                <button class="btn-redefinir-estoque" id="btn-redefinir-abc-robotica" data-id="abc-robotica" onclick="mostrarCampoRedefinirEstoque('abc-robotica')">Redefinir Estoque</button>
-                <div class="campo-redefinir" id="campo-redefinir-abc-robotica" style="display: none;">
-                    <input type="number" id="novo-estoque-abc-robotica" placeholder="Novo Estoque">
-                    <button class="btn-confirmar-redefinir" onclick="redefinirEstoque('abc-robotica')">Confirmar</button>
-                </div>
-                <p class="estoque-info" id="estoque-abc-robotica" data-id="abc-robotica">Estoque: 0</p>
-            </div>
+            <!-- Aqui serão inseridos dinamicamente os itens de livro -->
         </div>
     </div>
+
     <script src="/js/menu.js"></script>
 </body>
 </html>
