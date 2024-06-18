@@ -147,7 +147,7 @@ document.getElementById('adicionarLivroForm').addEventListener('submit', functio
     const preco = document.getElementById('preco').value;
     const estoque = document.getElementById('estoque').value;
 
-    fetch('/v1/books/add', {
+    fetch('http://127.0.0.1:5000/v1/books/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -159,10 +159,10 @@ document.getElementById('adicionarLivroForm').addEventListener('submit', functio
             isbn: isbn,
             publisher: editora,
             genre: genero,
-            pages: paginas,
+            page_count: paginas,
             language: idioma,
             summary: sumario,
-            image_url: urlImagem,
+            cover_image: urlImagem,
             price: preco,
             stock: estoque
         })
@@ -201,7 +201,7 @@ document.getElementById('adicionarLivroForm').addEventListener('submit', functio
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/v1/books/query', {
+    fetch('http://127.0.0.1:5000/v1/books/query', {
         method: 'GET'
     })
     .then(response => response.json())
@@ -230,4 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
     .catch(error => console.error('Erro:', error));
+
+
 });
