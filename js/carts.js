@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="item-title">${item.titulo}</h2>
                 <p class="item-price">${item.preco}</p>
                 <button class="btn-excluir" onclick="removerDoCarrinho(${index})">Excluir</button>
-                <button class="btn-comprar" onclick="comprarItem(${index}, '${item.id}')">Comprar</button>
+                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}')">Comprar</button>
             `;
             cartItemsDiv.appendChild(itemDiv);
         });
@@ -26,24 +26,20 @@ function adicionarAoCarrinho(titulo, preco, id) {
     let estoqueAtual = parseInt(btn.getAttribute('data-estoque'));
     let estoque = JSON.parse(localStorage.getItem('estoque')) || {};
 
-    if (estoqueAtual > 0) {
-        carrinho.push({ titulo, preco, id });
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    carrinho.push({ titulo, preco, id });
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
-        estoqueAtual--;
-        estoque[id] = estoqueAtual;
-        localStorage.setItem('estoque', JSON.stringify(estoque));
+    estoqueAtual--;
+    estoque[id] = estoqueAtual;
+    localStorage.setItem('estoque', JSON.stringify(estoque));
 
-        btn.setAttribute('data-estoque', estoqueAtual);
-        document.getElementById('estoque-' + id).innerText = 'Estoque: ' + estoqueAtual;
+    btn.setAttribute('data-estoque', estoqueAtual);
+    document.getElementById('estoque-' + id).innerText = 'Estoque: ' + estoqueAtual;
 
-        if (estoqueAtual === 0) {
-            btn.disabled = true;
-            btn.innerText = 'Esgotado';
-            btn.classList.add('esgotado');
-        }
-    } else {
-        alert('Estoque insuficiente!');
+    if (estoqueAtual === 0) {
+        btn.disabled = true;
+        btn.innerText = 'Esgotado';
+        btn.classList.add('esgotado');
     }
 }
 
@@ -86,7 +82,7 @@ function atualizarCarrinho() {
                 <h2 class="item-title">${item.titulo}</h2>
                 <p class="item-price">${item.preco}</p>
                 <button class="btn-excluir" onclick="removerDoCarrinho(${index})">Excluir</button>
-                <button class="btn-comprar" onclick="comprarItem(${index}, '${item.id}')">Comprar</button>
+                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}')">Comprar</button>
             `;
             cartItemsDiv.appendChild(itemDiv);
         });
