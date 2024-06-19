@@ -56,7 +56,7 @@
                 <img src="path-to-book-image.jpg" alt="Nome do Livro">
                 <h2>Nome do Livro</h2>
                 <p>Autor: Nome do Autor</p>
-                <p>Preço: R$ 19,99</p>
+                <p>Preço: R$ 19,99</p>            
                 <div class="button-group">
                     <button class="btn-add-cart">Carrinho</button>
                     <button class="btn-comprar">Comprar</button>
@@ -93,20 +93,41 @@
                     <label for="enderecoEntrega">Endereço de Entrega</label>
                     <input type="text" id="enderecoEntrega" name="enderecoEntrega" value="No 14, Femi Ajaneloko street, Jagun area, Ibadan, Oyo, state, Nigeria" readonly>
                 </div>
+                <input type="hidden" id="user_id" name="id_user" value="">
+                <input type="hidden" id="book_id" name="id_book" value="">
+
                 <div class="form-group full-width">
                     <button type="button" class="btn cancelar" id="cancelarCompra">Cancelar</button>
-                    <button type="submit" class="btn aceitar">Aceitar Compra</button>
+                    <button type="submit" class="btn aceitar" id="aceitarCompra">Aceitar Compra</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
+
+        function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+        }
+
         // Função para abrir o modal
-        function abrirModal(nomeLivro, precoLivro) {
+        function abrirModal(nomeLivro, precoLivro, book_id) {
             document.getElementById('modalBookName').innerText = 'Nome do Livro: ' + nomeLivro;
             document.getElementById('modalBookPrice').innerText = 'Preço: ' + precoLivro;
+            document.getElementById('book_id').value = book_id; 
             document.getElementById('modalPagamento').style.display = 'block';
+
+            const id_user = getCookie('user_id'); // Substitua 'id_user' pelo nome correto do cookie
+    
+            if (id_user) {
+                document.getElementById('user_id').value = id_user; // Define o id_user no campo oculto
+            } else {
+                // Trate o caso em que o id_user não está presente
+                console.error('ID do usuário não encontrado no cookie.');
+    }            
         }
 
         // Função para fechar o modal
@@ -123,6 +144,54 @@
             alert(nomeLivro + ' foi adicionado ao carrinho!');
             // Implementar lógica de adicionar ao carrinho
         }
+
+        document.getElementById('aceitarCompra').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+            
+            // Obtenha os dados do formulário
+            const formData = new FormData(document.getElementById('formPagamento'));
+
+            // Crie um objeto JavaScript com os dados do FormData
+            const formDataObj = {};
+            formData.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+
+            // Defina o cabeçalho Content-Type para indicar que está enviando JSON
+            const headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+
+            // URL da API
+            const url = 'http://127.0.0.1:5000/v1/my_books/payment';
+
+            // Configuração da requisição
+            fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(formDataObj) // Envie os dados como JSON
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar dados');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Resposta da API:', data);
+                alert('Compra efetuada com sucesso!');
+
+                // Limpar o formulário após a compra
+                document.getElementById('formPagamento').reset();
+
+                // Fechar o modal após a compra
+                document.getElementById('modalPagamento').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados:', error);
+                alert('Erro ao realizar pagamento. Por favor, tente novamente.');
+            });
+        });
+
     </script>
     <script src="/js/carts.js"></script>
 </body>
