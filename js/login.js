@@ -38,12 +38,15 @@ async function loginUser(email, password) {
     const responseData = await response.json();
     console.log(responseData);
 
-    // Configura o cookie com o token de autenticação
-    if (responseData.token) {
-      setCookie('authToken', responseData.token, 1); // Define o cookie por 1 dia
-      alert('Login bem-sucedido');
+    // Configura os cookies com o user_id e role e redireciona se login bem-sucedido
+    if (responseData.data) {
+      setCookie('user_id', responseData.data.user_id, 1); // Define o cookie por 1 dia
+      setCookie('role', responseData.data.role, 1); // Define o cookie por 1 dia
+      
+      // Redireciona para a página desejada
+      window.location.href = './inicial_user.html'; // Substitua pelo caminho da página de destino
     } else {
-      alert('Erro ao fazer login. Token não recebido.');
+      alert('Erro ao fazer login. Dados não recebidos.');
     }
 
   } catch (error) {

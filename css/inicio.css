@@ -111,6 +111,7 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between; /* Alinhar os itens verticalmente */
 }
 
 .book-item img {
@@ -123,6 +124,7 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
+    min-height: 3em; /* Adicionado para altura mínima */
 }
 
 .book-item p {
@@ -130,16 +132,10 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     margin-bottom: 5px;
 }
 
-.book-item {
+.book-item .button-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 5px;
-    width: 300px;
+    justify-content: center;
+    gap: 10px; /* Espaço entre os botões */
 }
 
 .btn-add-cart, .btn-comprar {
@@ -150,11 +146,11 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 10px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100px; /* Definido para ter uma largura fixa */
 }
 
 .btn-comprar {
@@ -163,6 +159,10 @@ nav.menu-lateral ul li.item-menu a .icon > i {
 
 .btn-add-cart:hover, .btn-comprar:hover {
     background-color: #0056b3;
+}
+
+.btn-comprar:hover {
+    background-color: #218838;
 }
 
 .campo-redefinir input {
@@ -185,12 +185,6 @@ nav.menu-lateral ul li.item-menu a .icon > i {
 
 .btn-confirmar-redefinir:hover {
     background-color: #218838;
-}
-
-.button-group {
-    display: flex;
-    flex-direction: row;
-    gap: 10px; /* Espaço entre os botões */
 }
 
 .mensagem-carrinho {

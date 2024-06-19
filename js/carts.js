@@ -41,8 +41,11 @@ function carregarLivros() {
                         <h2>${book.title}</h2>
                         <p>Autor: ${book.author}</p>
                         <p>Preço: R$ ${book.price}</p>
-                        <button class="btn-add-cart" id="btn-${book.id}" onclick="adicionarAoCarrinho('${book.title}', 'R$ ${book.price}', '${book.id}')">Carrinho</button>
-                        <button class="btn-comprar" onclick="abrirModal('${book.title}', 'R$ ${book.price}')">Comprar</button>
+                        <div class="button-group">
+                            <button class="btn-add-cart" id="btn-${book.id}" onclick="adicionarAoCarrinho('${book.title}', 'R$ ${book.price}', '${book.id}')">Carrinho</button>
+                            <button class="btn-comprar" onclick="abrirModal('${book.title}', 'R$ ${book.price}')">Comprar</button>
+                        </div>
+
                     `;
 
                     bookCatalog.appendChild(bookItem);
