@@ -192,3 +192,10 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     flex-direction: row;
     gap: 10px; /* Espaço entre os botões */
 }
+
+.mensagem-carrinho {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
