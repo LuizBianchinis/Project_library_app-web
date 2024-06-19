@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Admin</title>
+    <title>Adicionar Livro</title>
     <link rel="stylesheet" href="/css/adminstyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
@@ -54,58 +54,58 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="titulo">Título do Livro</label>
-                        <input type="text" id="titulo" placeholder="Título do Livro" required>
+                        <input type="text" id="titulo" name="titulo" placeholder="Título do Livro" required>
                     </div>
                     <div class="form-group">
                         <label for="autor">Autor do Livro</label>
-                        <input type="text" id="autor" placeholder="Autor do Livro" required>
+                        <input type="text" id="autor" name="autor" placeholder="Autor do Livro" required>
                     </div>
                     <div class="form-group">
                         <label for="dataPublicacao">Data Publicação</label>
-                        <input type="date" id="dataPublicacao" placeholder="Data Publicação">
+                        <input type="date" id="dataPublicacao" name="dataPublicacao" placeholder="Data Publicação">
                     </div>
                     <div class="form-group">
                         <label for="isbn">ISBN</label>
-                        <input type="text" id="isbn" placeholder="ISBN">
+                        <input type="text" id="isbn" name="isbn" placeholder="ISBN">
                     </div>
                     <div class="form-group">
                         <label for="editora">Editora</label>
-                        <input type="text" id="editora" placeholder="Editora">
+                        <input type="text" id="editora" name="editora" placeholder="Editora">
                     </div>
                     <div class="form-group">
                         <label for="genero">Gênero</label>
-                        <input type="text" id="genero" placeholder="Gênero">
+                        <input type="text" id="genero" name="genero" placeholder="Gênero">
                     </div>
                     <div class="form-group">
                         <label for="paginas">Páginas</label>
-                        <input type="number" id="paginas" placeholder="Páginas">
+                        <input type="number" id="paginas" name="paginas" placeholder="Páginas">
                     </div>
                     <div class="form-group">
                         <label for="idioma">Idioma</label>
-                        <input type="text" id="idioma" placeholder="Idioma">
+                        <input type="text" id="idioma" name="idioma" placeholder="Idioma">
                     </div>
                     <div class="form-group">
-                        <label for="sumario">Sumario</label>
-                        <input type="text" id="sumario" placeholder="sumario">
+                        <label for="sumario">Sumário</label>
+                        <input type="text" id="sumario" name="sumario" placeholder="Sumário">
                     </div>
                     <div class="form-group">
                         <label for="urlImagem">URL da Imagem</label>
-                        <input type="url" id="urlImagem" placeholder="URL da Imagem">
+                        <input type="url" id="urlImagem" name="urlImagem" placeholder="URL da Imagem">
                     </div>
                     <div class="form-group">
                         <label for="preco">Preço</label>
-                        <input type="number" id="preco" placeholder="Preço">
+                        <input type="number" id="preco" name="preco" placeholder="Preço">
                     </div>
                     <div class="form-group">
                         <label for="estoque">Estoque</label>
-                        <input type="number" id="estoque" placeholder="Estoque">
+                        <input type="number" id="estoque" name="estoque" placeholder="Estoque">
                     </div>
                 </div>
-                <button type="submit">Adicionar Livro</button>
+                <button type="submit" class="btn-add">Adicionar Livro</button>
             </form>
         </div>
         <div id="bookCatalog" class="book-catalog"></div>
     </div>
-    <script src="/js/menu.js"></script>
+    <script src="/js/adicionar_livros.js"></script>
 </body>
 </html>
