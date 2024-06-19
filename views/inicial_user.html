@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="/css/stock.css">
+    <link rel="stylesheet" href="/css/inicio.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
@@ -24,7 +24,7 @@
             <li class="item-menu">
                 <a href="carinho.html">
                     <span class="icon"><i class="bi bi-bag"></i></span>
-                    <span class="txt-link">Carinho</span>
+                    <span class="txt-link">Carrinho</span>
                 </a>
             </li>
             <li class="item-menu">
@@ -56,8 +56,10 @@
                 <h2>Código Limpo</h2>
                 <p>Robert C. Martin</p>
                 <p>R$ 107,00</p>
-                <button class="btn-add-cart" id="btn-codigo-limpo" data-estoque="8" onclick="adicionarAoCarrinho('Código Limpo', 'R$ 107,00', 'codigo-limpo')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-codigo-limpo" data-id="codigo-limpo">Estoque: 8</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-codigo-limpo" onclick="adicionarAoCarrinho('Código Limpo', 'R$ 107,00', 'codigo-limpo')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-codigo-limpo" onclick="comprarLivro('Código Limpo')">Comprar</button>
+                </div>
             </div>
 
             <div class="book-item">
@@ -65,8 +67,10 @@
                 <h2>Redes de computadores</h2>
                 <p>Antonio Eduardo Marques da Silva</p>
                 <p>R$ 42,20</p>
-                <button class="btn-add-cart" id="btn-redes-computadores" data-estoque="12" onclick="adicionarAoCarrinho('Redes de computadores', 'R$ 42,20', 'redes-computadores')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-redes-computadores" data-id="redes-computadores">Estoque: 12</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-redes-computadores" onclick="adicionarAoCarrinho('Redes de computadores', 'R$ 42,20', 'redes-computadores')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-redes-computadores" onclick="comprarLivro('Redes de computadores')">Comprar</button>
+                </div>
             </div>
     
             <div class="book-item">
@@ -74,8 +78,10 @@
                 <h2>Python para Excel</h2>
                 <p>Felix Zumstein</p>
                 <p>R$ 67,40</p>
-                <button class="btn-add-cart" id="btn-python-excel" data-estoque="5" onclick="adicionarAoCarrinho('Python para Excel', 'R$ 67,40', 'python-excel')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-python-excel" data-id="python-excel">Estoque: 5</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-python-excel" onclick="adicionarAoCarrinho('Python para Excel', 'R$ 67,40', 'python-excel')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-python-excel" onclick="comprarLivro('Python para Excel')">Comprar</button>
+                </div>
             </div>
             
             <div class="book-item">
@@ -83,8 +89,10 @@
                 <h2>Indo Além com IA</h2>
                 <p>Thomas H. Davenport</p>
                 <p>R$ 56,60</p>
-                <button class="btn-add-cart" id="btn-alem-ia" data-estoque="3" onclick="adicionarAoCarrinho('Indo Além com IA', 'R$ 56,60', 'alem-ia')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-alem-ia" data-id="alem-ia">Estoque: 3</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-alem-ia" onclick="adicionarAoCarrinho('Indo Além com IA', 'R$ 56,60', 'alem-ia')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-alem-ia" onclick="comprarLivro('Indo Além com IA')">Comprar</button>
+                </div>
             </div>
     
             <div class="book-item">
@@ -92,8 +100,10 @@
                 <h2>Web 3.0</h2>
                 <p>Maria Olívia Rampim</p>
                 <p>R$ 43,20</p>
-                <button class="btn-add-cart" id="btn-web-3.0" data-estoque="6" onclick="adicionarAoCarrinho('Web 3.0', 'R$ 43,20', 'web-3.0')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-web-3.0" data-id="web-3.0">Estoque: 6</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-web-3.0" onclick="adicionarAoCarrinho('Web 3.0', 'R$ 43,20', 'web-3.0')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-web-3.0" onclick="comprarLivro('Web 3.0')">Comprar</button>
+                </div>
             </div>
     
             <div class="book-item">
@@ -101,11 +111,12 @@
                 <h2>ABC da Robótica</h2>
                 <p>Carlos Seabra & Sérgio Maciel</p>
                 <p>R$ 74,00</p>
-                <button class="btn-add-cart" id="btn-abc-robotica" data-estoque="8" onclick="adicionarAoCarrinho('ABC da Robótica', 'R$ 74,00', 'abc-robotica')">Adicionar ao Carrinho</button>
-                <p class="estoque-info" id="estoque-abc-robotica" data-id="abc-robotica">Estoque: 8</p>
+                <div class="button-group">
+                    <button class="btn-add-cart" id="btn-abc-robotica" onclick="adicionarAoCarrinho('ABC da Robótica', 'R$ 74,00', 'abc-robotica')">Carrinho</button>
+                    <button class="btn-comprar" id="btn-comprar-abc-robotica" onclick="comprarLivro('ABC da Robótica')">Comprar</button>
+                </div>
             </div>
         </div>
     </div>
-    <script src="/js/carts.js"></script>
 </body>
 </html>

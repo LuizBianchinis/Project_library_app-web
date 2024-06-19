@@ -1,0 +1,107 @@
+/* Estilos para o Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+    font-family: 'Outfit', sans-serif; /* Adicionando a mesma fonte do segundo CSS */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal p {
+    text-align: center;
+}
+
+#formPagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#formPagamento .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#formPagamento .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#formPagamento .form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+}
+
+#formPagamento .form-group input[readonly] {
+    background-color: #e9e9e9;
+}
+
+#formPagamento .form-group.full-width {
+    display: flex;
+    flex-direction: row; /* Alterado de column para row */
+    justify-content: space-between;
+}
+
+#formPagamento .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    flex: 1; /* Isso garante que os botões ocupem espaço igual */
+    margin: 0 5px; /* Adiciona um pequeno espaço entre os botões */
+}
+
+#formPagamento .btn.cancelar {
+    background-color: #ccc;
+    color: #333;
+}
+
+#formPagamento .btn.aceitar {
+    background-color: #0052cc;
+    color: white;
+}
+
+#formPagamento .btn:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal de Pagamento</title>
+    <!-- Importação do CSS do Modal -->
+    <link rel="stylesheet" href="/css/modal.css">
+</head>
+<body>
+    <!-- Botão para abrir o Modal -->
+    <button onclick="abrirModalPagamento()">Abrir Modal de Pagamento</button>
+
+    <!-- Modal de Pagamento -->
+    <div id="modalPagamento" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Pagamento</h2>
+            <p>Nome do Livro: Increase Your Financial IQ</p>
+            <p>Preço: $12.00</p>
+            <form id="formPagamento">
+                <div class="form-group">
+                    <label for="nomeCartao">Nome no Cartão</label>
+                    <input type="text" id="nomeCartao" name="nomeCartao" required>
+                </div>
+                <div class="form-group">
+                    <label for="numeroCartao">Número do Cartão</label>
+                    <input type="text" id="numeroCartao" name="numeroCartao" required>
+                </div>
+                <div class="form-group">
+                    <label for="dataExpiracao">Data de Expiração</label>
+                    <input type="text" id="dataExpiracao" name="dataExpiracao" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <div class="form-group">
+                    <label for="enderecoEntrega">Endereço de Entrega</label>
+                    <input type="text" id="enderecoEntrega" name="enderecoEntrega" value="No 14, Femi Ajaneloko street, Jagun area, Ibadan, Oyo, state, Nigeria" readonly>
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" class="btn cancelar">Cancelar</button>
+                    <button type="submit" class="btn aceitar">Aceitar Compra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Importação do JS do Modal -->
+    <script src="/js/modal.js"></script>
+</body>
+</html>
