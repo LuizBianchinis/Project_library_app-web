@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
     <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
@@ -58,65 +59,73 @@
                 <p>R$ 107,00</p>
                 <div class="button-group">
                     <button class="btn-add-cart" id="btn-codigo-limpo" onclick="adicionarAoCarrinho('Código Limpo', 'R$ 107,00', 'codigo-limpo')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-codigo-limpo" onclick="comprarLivro('Código Limpo')">Comprar</button>
+                    <button class="btn-comprar" id="btn-comprar-codigo-limpo" onclick="abrirModal('Código Limpo', 'R$ 107,00')">Comprar</button>
                 </div>
             </div>
 
-            <div class="book-item">
-                <img src="/images/LV477687.webp" alt="Capa do livro 'Redes de computadores'" style="width:150px;height:auto;">
-                <h2>Redes de computadores</h2>
-                <p>Antonio Eduardo Marques da Silva</p>
-                <p>R$ 42,20</p>
-                <div class="button-group">
-                    <button class="btn-add-cart" id="btn-redes-computadores" onclick="adicionarAoCarrinho('Redes de computadores', 'R$ 42,20', 'redes-computadores')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-redes-computadores" onclick="comprarLivro('Redes de computadores')">Comprar</button>
-                </div>
-            </div>
-    
-            <div class="book-item">
-                <img src="/images/LV515293.webp" alt="Capa do livro 'Python para Excel'" style="width:150px;height:auto;">
-                <h2>Python para Excel</h2>
-                <p>Felix Zumstein</p>
-                <p>R$ 67,40</p>
-                <div class="button-group">
-                    <button class="btn-add-cart" id="btn-python-excel" onclick="adicionarAoCarrinho('Python para Excel', 'R$ 67,40', 'python-excel')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-python-excel" onclick="comprarLivro('Python para Excel')">Comprar</button>
-                </div>
-            </div>
-            
-            <div class="book-item">
-                <img src="/images/LV515296.webp" alt="Capa do livro 'Indo Além com IA'" style="width:150px;height:auto;">
-                <h2>Indo Além com IA</h2>
-                <p>Thomas H. Davenport</p>
-                <p>R$ 56,60</p>
-                <div class="button-group">
-                    <button class="btn-add-cart" id="btn-alem-ia" onclick="adicionarAoCarrinho('Indo Além com IA', 'R$ 56,60', 'alem-ia')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-alem-ia" onclick="comprarLivro('Indo Além com IA')">Comprar</button>
-                </div>
-            </div>
-    
-            <div class="book-item">
-                <img src="/images/LV516132.webp" alt="Capa do livro 'Web 3.0'" style="width:150px;height:auto;">
-                <h2>Web 3.0</h2>
-                <p>Maria Olívia Rampim</p>
-                <p>R$ 43,20</p>
-                <div class="button-group">
-                    <button class="btn-add-cart" id="btn-web-3.0" onclick="adicionarAoCarrinho('Web 3.0', 'R$ 43,20', 'web-3.0')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-web-3.0" onclick="comprarLivro('Web 3.0')">Comprar</button>
-                </div>
-            </div>
-    
-            <div class="book-item">
-                <img src="/images/LV518250.webp" alt="Capa do livro 'ABC da Robótica'" style="width:150px;height:auto;">
-                <h2>ABC da Robótica</h2>
-                <p>Carlos Seabra & Sérgio Maciel</p>
-                <p>R$ 74,00</p>
-                <div class="button-group">
-                    <button class="btn-add-cart" id="btn-abc-robotica" onclick="adicionarAoCarrinho('ABC da Robótica', 'R$ 74,00', 'abc-robotica')">Carrinho</button>
-                    <button class="btn-comprar" id="btn-comprar-abc-robotica" onclick="comprarLivro('ABC da Robótica')">Comprar</button>
-                </div>
-            </div>
+            <!-- Repetir a estrutura acima para os outros livros... -->
+
         </div>
     </div>
+
+    <!-- Modal de Pagamento -->
+    <div id="modalPagamento" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Pagamento</h2>
+            <p id="modalBookName"></p>
+            <p id="modalBookPrice"></p>
+            <form id="formPagamento">
+                <div class="form-group">
+                    <label for="nomeCartao">Nome no Cartão</label>
+                    <input type="text" id="nomeCartao" name="nomeCartao" required>
+                </div>
+                <div class="form-group">
+                    <label for="numeroCartao">Número do Cartão</label>
+                    <input type="text" id="numeroCartao" name="numeroCartao" required>
+                </div>
+                <div class="form-group">
+                    <label for="dataExpiracao">Data de Expiração</label>
+                    <input type="text" id="dataExpiracao" name="dataExpiracao" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <div class="form-group">
+                    <label for="enderecoEntrega">Endereço de Entrega</label>
+                    <input type="text" id="enderecoEntrega" name="enderecoEntrega" value="No 14, Femi Ajaneloko street, Jagun area, Ibadan, Oyo, state, Nigeria" readonly>
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" class="btn cancelar" id="cancelarCompra">Cancelar</button>
+                    <button type="submit" class="btn aceitar">Aceitar Compra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal
+        function abrirModal(nomeLivro, precoLivro) {
+            document.getElementById('modalBookName').innerText = 'Nome do Livro: ' + nomeLivro;
+            document.getElementById('modalBookPrice').innerText = 'Preço: ' + precoLivro;
+            document.getElementById('modalPagamento').style.display = 'block';
+        }
+
+        // Função para fechar o modal
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('modalPagamento').style.display = 'none';
+        }
+
+        document.getElementById('cancelarCompra').onclick = function() {
+            document.getElementById('modalPagamento').style.display = 'none';
+        }
+
+        // Função para adicionar ao carrinho (simples)
+        function adicionarAoCarrinho(nomeLivro, precoLivro, idLivro) {
+            alert(nomeLivro + ' foi adicionado ao carrinho!');
+            // Implementar lógica de adicionar ao carrinho
+        }
+    </script>
 </body>
 </html>
