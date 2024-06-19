@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log(responseData);
       
           alert(responseData.message);
+
+          // Redireciona para a página de login após o cadastro bem-sucedido
+          window.location.href = '/views/login.html';
       
         } catch (error) {
           console.error('Erro ao fazer a requisição:', error);
