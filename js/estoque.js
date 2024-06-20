@@ -158,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <button class="btn-confirmar-redefinir">Confirmar</button>
                             </div>
                             <p class="estoque-info" id="estoque-${book.id}" data-id="${book.id}">Estoque: ${book.stock}</p>
-                            <a href="atualizar_livro.html?id=${book.id}" class="btn-atualizar-livro">Atualizar Livro</a>
                             <button class="btn-excluir-livro" data-id="${book.id}">Excluir Livro</button>
                         `;
 
