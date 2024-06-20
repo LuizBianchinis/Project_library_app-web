@@ -101,8 +101,67 @@
         if (parts.length === 2) return parts.pop().split(';').shift();
         return null;
         }
-        
     
-    
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('http://127.0.0.1:5000/v1/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('first_name').value = data.first_name;
+                document.getElementById('last_name').value = data.last_name;
+                document.getElementById('cellphone').value = data.cellphone;
+                document.getElementById('email').value = data.email;
+                document.getElementById('password').value = data.password;
+                document.getElementById('birth_date').value = data.birth_date;
+                document.getElementById('city').value = data.city;
+                document.getElementById('zip_code').value = data.zip_code;
+                document.getElementById('address').value = data.address;
+                document.getElementById('number').value = data.number;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function enableEditing() {
+            document.querySelectorAll('#dadosUsuarioForm input, #dadosUsuarioForm textarea').forEach(input => {
+                input.removeAttribute('readonly');
+            });
+        }
+
+        document.getElementById('dadosUsuarioForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const data = {
+                id_user: 'current_user_id', // Assumindo que você tenha o ID do usuário armazenado de alguma forma
+                first_name: document.getElementById('first_name').value,
+                last_name: document.getElementById('last_name').value,
+                cellphone: document.getElementById('cellphone').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                birth_date: document.getElementById('birth_date').value,
+                city: document.getElementById('city').value,
+                zip_code: document.getElementById('zip_code').value,
+                address: document.getElementById('address').value,
+                number: document.getElementById('number').value
+            };
+
+            fetch('/update', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Dados atualizados com sucesso!');
+                location.reload(); // Recarrega a página para desativar a edição e atualizar os dados
+            })
+            .catch(error => console.error('Error:', error));
+        });
+  
     </script>
 </body>
