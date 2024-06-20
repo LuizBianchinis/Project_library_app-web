@@ -111,6 +111,8 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between; /* Alinha o conteúdo com espaço entre */
+    height: 100%; /* Garante que os itens internos ocupem toda a altura disponível */
 }
 
 .book-item img {
@@ -130,20 +132,15 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     margin-bottom: 5px;
 }
 
-.book-item {
+.book-item .btn-group {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    width: 100%;
     align-items: center;
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 5px;
-    width: 300px;
 }
 
-
-.btn-redefinir-estoque, .btn-atualizar-livro, .btn-apagar-livro {
+.btn-redefinir-estoque, .btn-confirmar-redefinir, .btn-excluir-livro, .btn-atualizar-livro {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -151,23 +148,27 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 10px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    font-size: 1.3rem;
+    width: 100%; /* Garante que os botões ocupem toda a largura disponível */
 }
 
-.btn-redefinir-estoque:hover {
+.btn-redefinir-estoque:hover, .btn-confirmar-redefinir:hover, .btn-excluir-livro:hover, .btn-atualizar-livro:hover {
     background-color: #0056b3;
 }
 
-.campo-redefinir, .btn-atualizar-livro, .btn-apagar-livro {
+.campo-redefinir {
     margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .campo-redefinir input {
     width: 100%;
+    max-width: 200px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -182,29 +183,37 @@ nav.menu-lateral ul li.item-menu a .icon > i {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
+    max-width: 200px;
+    font-size: 1.3rem;
 }
 
 .btn-confirmar-redefinir:hover {
-    background-color: #218838;
+    background-color: #28a745;
 }
 
 .estoque-info {
     margin-top: 10px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #333;
 }
 
-.btn-add-cart{
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.btn-atualizar-livro {
+    background-color: #28a745;
+    color: #fff6f6;
     margin-top: 10px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-excluir-livro {
+    background-color: #dc3545;
+    color: #fff;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-excluir-livro:hover {
+    background-color: #c82333;
 }
