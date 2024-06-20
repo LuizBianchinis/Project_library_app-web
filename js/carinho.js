@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="item-title">${item.titulo}</h2>
                 <p class="item-price">${item.preco}</p>
                 <button class="btn-excluir" onclick="removerDoCarrinho(${index})">Excluir</button>
-                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}')">Comprar</button>
+                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}','${item.id}')">Comprar</button>
             `;
             cartItemsDiv.appendChild(itemDiv);
         });
@@ -58,7 +58,7 @@ function atualizarCarrinho() {
                 <h2 class="item-title">${item.titulo}</h2>
                 <p class="item-price">${item.preco}</p>
                 <button class="btn-excluir" onclick="removerDoCarrinho(${index})">Excluir</button>
-                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}')">Comprar</button>
+                <button class="btn-comprar" onclick="abrirModal('${item.titulo}', '${item.preco}','${item.id}')">Comprar</button>
             `;
             cartItemsDiv.appendChild(itemDiv);
         });
