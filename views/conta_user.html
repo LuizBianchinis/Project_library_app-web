@@ -69,15 +69,11 @@
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="text" id="password" name="password" readonly>
+                <input type="password" id="password" name="password" readonly>
             </div>
             <div class="form-group">
                 <label for="birth_date">Data de Nascimento</label>
                 <input type="date" id="birth_date" name="birth_date" readonly>
-            </div>
-            <div class="form-group">
-                <label for="city">Cidade</label>
-                <input type="text" id="city" name="city" readonly>
             </div>
             <div class="form-group">
                 <label for="zip_code">CEP</label>
@@ -89,79 +85,98 @@
             </div>
             <div class="form-group">
                 <label for="number">Numero</label>
-                <textarea id="text" name="number" rows="2" readonly></textarea>
+                <textarea id="number" name="number" rows="2" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" id="editButton" onclick="enableEditing()">Editar</button>
+                <button type="submit" id="saveButton">Salvar</button>
             </div>
         </form>
     </div>
     <script>
-    
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        return null;
+document.addEventListener("DOMContentLoaded", function() {
+    const userId = getCookie('user_id');
+    if (userId) {
+        fetch(`http://127.0.0.1:5000/v1/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const user = data.data[0];
+            document.getElementById('first_name').value = user.first_name;
+            document.getElementById('last_name').value = user.last_name;
+            document.getElementById('cellphone').value = user.cellphone;
+            document.getElementById('email').value = user.email;
+            document.getElementById('birth_date').value = user.birth_date;
+            document.getElementById('zip_code').value = user.zip_code;
+            document.getElementById('address').value = user.address;
+            document.getElementById('number').value = user.number;
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        console.error('User ID not found in cookies');
+    }
+});
+
+function enableEditing() {
+    document.querySelectorAll('#dadosUsuarioForm input, #dadosUsuarioForm textarea').forEach(input => {
+        input.removeAttribute('readonly');
+    });
+}
+
+document.getElementById('dadosUsuarioForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const userId = getCookie('user_id');
+    if (!userId) {
+        console.error('User ID not found in cookies');
+        return;
+    }
+
+    const data = {
+        id_user: userId,
+        first_name: document.getElementById('first_name').value,
+        last_name: document.getElementById('last_name').value,
+        cellphone: document.getElementById('cellphone').value,
+        email: document.getElementById('email').value,
+        birth_date: document.getElementById('birth_date').value,
+        address: document.getElementById('address').value,
+        zip_code: document.getElementById('zip_code').value,
+        role: "user" // Assuming a default role for demonstration
+    };
+
+    fetch('http://127.0.0.1:5000//v1/user/update', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => { throw new Error(errorData.message); });
         }
-    
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('http://127.0.0.1:5000/v1/', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('first_name').value = data.first_name;
-                document.getElementById('last_name').value = data.last_name;
-                document.getElementById('cellphone').value = data.cellphone;
-                document.getElementById('email').value = data.email;
-                document.getElementById('password').value = data.password;
-                document.getElementById('birth_date').value = data.birth_date;
-                document.getElementById('city').value = data.city;
-                document.getElementById('zip_code').value = data.zip_code;
-                document.getElementById('address').value = data.address;
-                document.getElementById('number').value = data.number;
-            })
-            .catch(error => console.error('Error:', error));
-        });
+        return response.json();
+    })
+    .then(data => {
+        alert('Dados atualizados com sucesso!');
+        location.reload(); // Recarrega a página para desativar a edição e atualizar os dados
+    })
+    .catch(error => {
+        alert('Erro ao atualizar os dados do usuário.');
+        console.error('Error:', error);
+    });
+});
 
-        function enableEditing() {
-            document.querySelectorAll('#dadosUsuarioForm input, #dadosUsuarioForm textarea').forEach(input => {
-                input.removeAttribute('readonly');
-            });
-        }
-
-        document.getElementById('dadosUsuarioForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const data = {
-                id_user: 'current_user_id', // Assumindo que você tenha o ID do usuário armazenado de alguma forma
-                first_name: document.getElementById('first_name').value,
-                last_name: document.getElementById('last_name').value,
-                cellphone: document.getElementById('cellphone').value,
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value,
-                birth_date: document.getElementById('birth_date').value,
-                city: document.getElementById('city').value,
-                zip_code: document.getElementById('zip_code').value,
-                address: document.getElementById('address').value,
-                number: document.getElementById('number').value
-            };
-
-            fetch('/update', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Dados atualizados com sucesso!');
-                location.reload(); // Recarrega a página para desativar a edição e atualizar os dados
-            })
-            .catch(error => console.error('Error:', error));
-        });
-  
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
     </script>
 </body>
+</html>
